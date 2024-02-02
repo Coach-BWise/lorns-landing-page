@@ -1,14 +1,21 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import Jumbotron from "./Jumbotron";
+import { ListItemButton } from "@mui/material";
 const Home = () => {
+  const buyBook = ": https://www.amazon.com/dp/B0CTPS4R2L";
   return (
     <div className="home-container">
       <Navbar />
-      {/* <div className="home-banner-container">
-        <img src="covers-copy_orig.png" alt=""></img>
-      </div> */}
+      <div className="home-banner-container">
+        <div className="home-bannerImage-container">
+          <img src="about-background2.png" alt="about-background" />
+        </div>
+      </div>
       <div className="home-text-section">
-        <h1 className="primary-heading">About</h1>
+        <h1 className="secondary-heading">About</h1>
         <p className="primary-text">
           <strong>Lorn Hillaker</strong> is a first-time author of a story about
           dragons and magic pirates. Coincidentally, he is convinced he never
@@ -20,6 +27,17 @@ const Home = () => {
           attempt to conjure him by saying his name five times in a darkened
           room, people will look at you strangely.
         </p>
+        <Jumbotron />
+        <a
+          style={{ textDecoration: "none" }}
+          className="secondary-button"
+          href={buyBook}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Buy Now
+        </a>
+
         <p>
           On the Ember Sea, the source of all magic is gold. Sailors desperately
           hunt for caches of buried treasure and pray to avoid the dragons, who
@@ -38,6 +56,8 @@ const Home = () => {
           elder dragon may be hunting them too.
         </p>
       </div>
+      <Contact />
+      <Footer />
     </div>
   );
 };

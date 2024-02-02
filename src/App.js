@@ -4,7 +4,6 @@ import Jumbotron from "./Components/Jumbotron";
 function App() {
   return (
     <>
-      <Jumbotron />
       <div className="App">
         <Home />
       </div>

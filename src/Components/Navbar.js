@@ -10,24 +10,23 @@ import {
   ListItemText,
   ListItemIcon,
 } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
+
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { FaXTwitter } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaBlog } from "react-icons/fa";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const blogUrl = "https://lornhillaker.com/blog";
+  const facebookUrl =
+    "https://www.facebook.com/people/Lorn-Hillaker/61556220563593/";
+  const instagramUrl = "https://www.instagram.com/lornhillaker/";
+  const twitterUrl = "https://twitter.com/lornhillaker";
   const menuOptions = [
-    {
-      text: "Blog",
-      icon: <FaBlog />,
-      path: "/",
-    },
     {
       text: "About",
       icon: <InfoIcon />,
@@ -44,42 +43,61 @@ const Navbar = () => {
       path: "/contact",
     },
     {
+      text: "Blog",
+      icon: <FaBlog />,
+      path: blogUrl,
+    },
+    {
       text: "X-Twitter",
       icon: <FaXTwitter />,
-      path: "/https://twitter.com/lornhillaker",
+      path: twitterUrl,
     },
     {
       text: "Facebook",
-      icon: <FaFacebook />,
-      path: "https://www.facebook.com/people/Lorn-Hillaker/61556220563593/",
+      icon: <FaFacebookF />,
+      path: facebookUrl,
     },
     {
       text: "Instagram",
       icon: <FaInstagram />,
-      path: "https://www.instagram.com/lornhillaker/",
+      path: instagramUrl,
     },
   ];
+
   return (
     <nav>
       <div className="nav-logo-container">
         <h2>LORN HILLAKER</h2>
       </div>
       <div className="navbar-links-container">
-        <a href="#">
-          <FaBlog />
-        </a>
-        <a href="#">About</a>
-        <a href="#">Testamonials</a>
-        <a href="#">Contact</a>
-        <a href="https://twitter.com/lornhillaker">
-          <FaXTwitter />
-        </a>
-        <a href="https://www.facebook.com/people/Lorn-Hillaker/61556220563593/">
-          <FaFacebook />
-        </a>
-        <a href="https://www.instagram.com/lornhillaker/">
-          <FaInstagram />
-        </a>
+        {menuOptions.map((option) => {
+          if (
+            option.text === "About" ||
+            option.text === "Testamonials" ||
+            option.text === "Contact"
+          ) {
+            return (
+              <a
+                key={option.text}
+                href={option.path}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {option.text}
+              </a>
+            );
+          }
+          return (
+            <a
+              key={option.text}
+              href={option.path}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {option.icon}
+            </a>
+          );
+        })}
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
@@ -99,7 +117,11 @@ const Navbar = () => {
           <List>
             {menuOptions.map((option) => (
               <ListItem key={option.text} disablePadding>
-                <ListItemButton>
+                <ListItemButton
+                  href={option.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <ListItemIcon>{option.icon}</ListItemIcon>
                   <ListItemText primary={option.text} />
                 </ListItemButton>
